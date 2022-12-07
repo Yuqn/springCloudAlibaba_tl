@@ -1,0 +1,12 @@
+# 设置nacos配置，必须，文件名也必须是 bootstrap，格式可以 properties 或者 yml
+spring:
+  application:
+    name: com.yuqn.name
+  cloud:
+    nacos:
+      server-addr: www.yuqn.xyz:8848
+      username: nacos
+      password: idiot_Yuqn@123
+      config:
+        namespace: public
+

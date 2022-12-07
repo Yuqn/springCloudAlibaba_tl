@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: order-sentinel
+  cloud:
+    nacos:
+      server-addr: www.yuqn.xyz:8848
+      discovery:
+        username: nacos
+        password: idiot_Yuqn@123
+        namespace: public
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:9000

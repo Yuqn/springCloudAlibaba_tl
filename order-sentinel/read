@@ -1,0 +1,25 @@
+springCloud 整合 sentinel，服务需要注册到 nacos
+一、创建项目（这里使用 order 项目）
+二、添加依赖（在父项目添加）
+    <!-- 添加 sentinel 依赖-->
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        <version>1.8.0</version>
+    </dependency>
+三、添加配置文件
+    server:
+      port: 8080
+    spring:
+      application:
+        name: order-sentinel
+      cloud:
+        nacos:
+          server-addr: www.yuqn.xyz:8848
+          discovery:
+            username: nacos
+            password: idiot_Yuqn@123
+            namespace: public
+        sentinel:
+          transport:
+            dashboard: 127.0.0.1:9000

@@ -1,0 +1,176 @@
+springCloud-alibaba项目，
+    注意springboot版本关系，这里用的是：springboot：2.3.11.RELEASE,springcloud alibaba：2.2.5.RELEASE
+一、创建父项目，用于管理依赖
+    file -> new -> project -> maven
+二、父项目添加依赖
+    <!-- 设置打包格式-->
+    <packaging>pom</packaging>
+
+    <!-- 添加springCloud alibaba依赖-->
+    <dependencyManagement>
+        <!-- 添加 springCloud alibaba 依赖，添加该依赖后，会默认管理对应组件的依赖-->
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 管理 springboot 版本，把上面原来的 parent 标签内容去掉-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>2.3.11.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 添加 springCloud 依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+  注：通过以上就可以进行服务间调用了，创建order、stock项目，可以通过restTemplate对象调用。
+三、创建服务提供者
+    创建一个工程，选择父工程用于继承依赖，或者复制order、stock进行修改，如果修改，主要是 项目名、添加nacos依赖、父项目pom文件添加管理子项目的依赖
+    一、添加依赖
+        <!-- 添加依赖-->
+        <dependencies>
+            <!-- 添加 springboot 依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <!-- 添加 nacos 依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            </dependency>
+        </dependencies>
+    二、修改配置文件
+        # 设置端口
+        server:
+          port: 8082
+        # 应用名称，application.name ：表示应用名称，nacos 会将该名称当做服务名称
+        # spring.cloud.nacos.server-addr ：nacos地址
+        # spring.cloud.nacos.discoery.username ：nacos 用户名
+        # spring.cloud.nacos.discoery.password ：nacos 密码
+        # spring.cloud.nacos.discoery.namespace ：nacos 区域
+        spring:
+          application:
+            name: nacos-stock
+          cloud:
+            nacos:
+              server-addr: www.yuqn.xyz:8848
+              discovery:
+                username: nacos
+                password: idiot_Yuqn@123
+                namespace: public
+    三、添加启动注解，高版本可以不用加
+        @EnableDiscoveryClient
+四、创建服务消费者(不基于feign)
+    创建一个工程，选择父工程用于继承依赖，或者复制order、stock进行修改，如果修改，主要是 项目名、添加nacos依赖、父项目pom文件添加管理子项目的依赖
+        一、添加依赖
+            <!-- 添加依赖-->
+            <dependencies>
+                <!-- 添加 springboot 依赖-->
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+                <!-- 添加 nacos 依赖-->
+                <dependency>
+                    <groupId>com.alibaba.cloud</groupId>
+                    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                </dependency>
+            </dependencies>
+        二、修改配置文件
+            # 设置端口
+            server:
+              port: 8081
+            # 应用名称，application.name ：表示应用名称，nacos 会将该名称当做服务名称
+            # spring.cloud.nacos.server-addr ：nacos地址
+            # spring.cloud.nacos.discoery.username ：nacos 用户名
+            # spring.cloud.nacos.discoery.password ：nacos 密码
+            # spring.cloud.nacos.discoery.namespace ：nacos 区域
+            spring:
+              application:
+                name: nacos-order
+              cloud:
+                nacos:
+                  server-addr: www.yuqn.xyz:8848
+                  discovery:
+                    username: nacos
+                    password: idiot_Yuqn@123
+                    namespace: public
+        三、添加启动注解，高版本可以不用加
+            @EnableDiscoveryClient
+        四、添加负载均衡注解
+            @LoadBalanced
+        五、修改服务访问路径
+            原：String msg = restTemplate.getForObject("http://localhost:8082/test1",String.class);
+            改：String msg = restTemplate.getForObject("http://nacos-stock/test1",String.class);
+四、创建服务消费者(基于feign，feign风格使用在消费者)
+    创建一个工程，选择父工程用于继承依赖，或者复制order、stock进行修改，如果修改，主要是 项目名、添加nacos依赖、父项目pom文件添加管理子项目的依赖
+        一、添加依赖
+            <!-- 添加依赖-->
+            <dependencies>
+                <!-- 添加 springboot 依赖-->
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+                <!-- 添加 nacos 依赖-->
+                <dependency>
+                    <groupId>com.alibaba.cloud</groupId>
+                    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                </dependency>
+                <!-- 添加 feign 依赖-->
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-openfeign</artifactId>
+                </dependency>
+            </dependencies>
+        二、修改配置文件
+            # 设置端口
+            server:
+              port: 8081
+            # 应用名称，application.name ：表示应用名称，nacos 会将该名称当做服务名称
+            # spring.cloud.nacos.server-addr ：nacos地址
+            # spring.cloud.nacos.discoery.username ：nacos 用户名
+            # spring.cloud.nacos.discoery.password ：nacos 密码
+            # spring.cloud.nacos.discoery.namespace ：nacos 区域
+            spring:
+              application:
+                name: nacos-order
+              cloud:
+                nacos:
+                  server-addr: www.yuqn.xyz:8848
+                  discovery:
+                    username: nacos
+                    password: idiot_Yuqn@123
+                    namespace: public
+        三、创建接口，对应提供者控制器
+            /**
+             * 添加 feign 注解，@FeignClient
+             * name：服务提供者名称
+             * path：服务提供者控制器 @RequestMapping 内容，如果没有，不写
+             */
+            @FeignClient(name = "nacos-stock")
+            @Service
+            public interface OrderService {
+                /**
+                 * 定义接口对应接口，服务提供者怎么定义，就怎么写
+                 */
+                @RequestMapping("test1")
+                String test();
+            }
+        四、添加启动注解，高版本可以不用加
+            @EnableDiscoveryClient
+            // feign 启动注解
+            @EnableFeignClients

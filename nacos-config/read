@@ -1,0 +1,28 @@
+读取 nacos 配置数据
+一、创建项目
+二、添加依赖
+    <!-- 添加 config 依赖-->
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+    </dependency>
+三、读取内容
+    public static void main(String[] args) {
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(NacosConfigApplication.class,args);
+        // 读取 nacos 配置
+        String yuqnName = applicationContext.getEnvironment().getProperty("yuqn.name");
+        String yuqnAge = applicationContext.getEnvironment().getProperty("yuqn.age");
+        System.out.println("getName:" + yuqnName + "，getAge:" + yuqnAge);
+    }
+四、添加 bootstrap 配置文件，连接 nacos，文件名 必须为 bootstrap ，格式可以 yml 或者 properties
+    # 设置nacos配置，必须，文件名也必须是 bootstrap，格式可以 properties 或者 yml
+    spring:
+      application:
+        name: com.yuqn.name
+      cloud:
+        nacos:
+          server-addr: www.yuqn.xyz:8848
+          username: nacos
+          password: idiot_Yuqn@123
+          config:
+            namespace: public

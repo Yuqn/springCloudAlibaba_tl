@@ -1,0 +1,18 @@
+# 设置端口
+server:
+  port: 8081
+# 应用名称，application.name ：表示应用名称，nacos 会将该名称当做服务名称
+# spring.cloud.nacos.server-addr ：nacos地址
+# spring.cloud.nacos.discoery.username ：nacos 用户名
+# spring.cloud.nacos.discoery.password ：nacos 密码
+# spring.cloud.nacos.discoery.namespace ：nacos 区域
+spring:
+  application:
+    name: nacos-order
+  cloud:
+    nacos:
+      server-addr: www.yuqn.xyz:8848
+      discovery:
+        username: nacos
+        password: idiot_Yuqn@123
+        namespace: public
