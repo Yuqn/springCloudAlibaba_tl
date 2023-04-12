@@ -69,20 +69,20 @@ public class TestController {
      * 设置限流规则，使用 @PostConstruct 注解，在创建 bean 的时候，会初始化这个方法
      * @date: 2022/10/27 16:39
      */
-    @PostConstruct
-    private static void initFlowRules(){
-        // 设置规则，FlowRule 流控规则
-        List<FlowRule> rules = new ArrayList<>();
-        // 流控
-        FlowRule rule = new FlowRule();
-        // 指定资源进行流控
-        rule.setResource(RESOURCE_NAME);
-        // 设置流控规则
-        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
-        // 设置受保护的资源阈值，超过则限制
-        rule.setCount(1);
-        // 添加到 rules 中
-        rules.add(rule);
-        FlowRuleManager.loadRules(rules);
-    }
+//    @PostConstruct
+//    private static void initFlowRules(){
+//        // 设置规则，FlowRule 流控规则
+//        List<FlowRule> rules = new ArrayList<>();
+//        // 流控
+//        FlowRule rule = new FlowRule();
+//        // 指定资源进行流控
+//        rule.setResource(RESOURCE_NAME);
+//        // 设置流控规则
+//        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+//        // 设置受保护的资源阈值，超过则限制
+//        rule.setCount(1);
+//        // 添加到 rules 中
+//        rules.add(rule);
+//        FlowRuleManager.loadRules(rules);
+//    }
 }

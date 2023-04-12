@@ -18,20 +18,20 @@ logging:
   pattern:
     console: "%d - %m %n"
   file:
-    name: E:\myJavaProject\springCloudAlibaba_tl\log\server.log
+    name: E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\log\server.log
   logback:
     rollingpolicy:
       max-file-size: 4MB
-      file-name-pattern: E:\myJavaProject\springCloudAlibaba_tl\log\server.%d{yyyy-MM-dd}.%i.log
+      file-name-pattern: E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\log\server.%d{yyyy-MM-dd}.%i.log
 spring:
   application:
     name: sentinel-demo
   cloud:
     nacos:
-      server-addr: www.yuqn.xyz:8848
+      server-addr: 192.168.192.22:8848
       discovery:
         username: nacos
-        password: idiot_Yuqn@123
+        password: nacos
         namespace: public
     sentinel:
       transport:

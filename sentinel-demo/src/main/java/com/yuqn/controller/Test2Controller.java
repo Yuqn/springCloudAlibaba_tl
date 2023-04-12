@@ -88,15 +88,4 @@ public class Test2Controller {
         FlowRuleManager.loadRules(rules1);
     }
 
-    /**
-     * @Author: yuqn
-     * @Date: 2022/10/27 19:34
-     * @Description:
-     *
-     * @Version: 1.0
-     */
-    public List<String> test(String name){
-        List list = new ArrayList();
-        return list;
-    }
 }

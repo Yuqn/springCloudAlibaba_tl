@@ -1,0 +1,68 @@
+2023-04-12 16:15:46.289  INFO 23556 --- [main] com.yuqn.SentinelDemoApplication         : Starting SentinelDemoApplication using Java 1.8.0_311 on 餘de with PID 23556 (E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\target\classes started by yuqn in E:\myJavaProject\springCloudAlibaba_tl)
+2023-04-12 16:15:46.294  INFO 23556 --- [main] com.yuqn.SentinelDemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-04-12 16:15:47.487  INFO 23556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-04-12 16:15:47.498  INFO 23556 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-12 16:15:47.498  INFO 23556 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-04-12 16:15:47.668  INFO 23556 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-12 16:15:47.668  INFO 23556 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1303 ms
+2023-04-12 16:15:48.199  INFO 23556 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-04-12 16:15:48.209  INFO 23556 --- [main] com.yuqn.SentinelDemoApplication         : Started SentinelDemoApplication in 2.522 seconds (JVM running for 5.58)
+2023-04-12 16:16:31.095  INFO 23556 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-12 16:16:31.096  INFO 23556 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-12 16:16:31.097  INFO 23556 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-12 16:16:31.257  INFO 23556 --- [http-nio-8081-exec-1] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:16:32.674  INFO 23556 --- [http-nio-8081-exec-2] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:16:32.869  INFO 23556 --- [http-nio-8081-exec-3] com.yuqn.controller.TestController       : block!
+2023-04-12 16:16:33.422  INFO 23556 --- [http-nio-8081-exec-4] com.yuqn.controller.TestController       : block!
+2023-04-12 16:16:33.593  INFO 23556 --- [http-nio-8081-exec-6] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:14.487  INFO 20756 --- [main] com.yuqn.SentinelDemoApplication         : Starting SentinelDemoApplication using Java 1.8.0_311 on 餘de with PID 20756 (E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\target\classes started by yuqn in E:\myJavaProject\springCloudAlibaba_tl)
+2023-04-12 16:17:14.492  INFO 20756 --- [main] com.yuqn.SentinelDemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-04-12 16:17:15.647  INFO 20756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-04-12 16:17:15.656  INFO 20756 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-12 16:17:15.656  INFO 20756 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-04-12 16:17:15.811  INFO 20756 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-12 16:17:15.812  INFO 20756 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1250 ms
+2023-04-12 16:17:16.313  INFO 20756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-04-12 16:17:16.323  INFO 20756 --- [main] com.yuqn.SentinelDemoApplication         : Started SentinelDemoApplication in 2.491 seconds (JVM running for 4.311)
+2023-04-12 16:17:25.823  INFO 20756 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-12 16:17:25.823  INFO 20756 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-12 16:17:25.824  INFO 20756 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-12 16:17:29.626  INFO 20756 --- [http-nio-8081-exec-5] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:31.151  INFO 20756 --- [http-nio-8081-exec-6] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:31.330  INFO 20756 --- [http-nio-8081-exec-7] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:31.720  INFO 20756 --- [http-nio-8081-exec-8] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:31.914  INFO 20756 --- [http-nio-8081-exec-9] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:17:55.393  INFO 20756 --- [http-nio-8081-exec-3] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:21:45.684  INFO 22924 --- [main] com.yuqn.SentinelDemoApplication         : Starting SentinelDemoApplication using Java 1.8.0_311 on 餘de with PID 22924 (E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\target\classes started by yuqn in E:\myJavaProject\springCloudAlibaba_tl)
+2023-04-12 16:21:45.688  INFO 22924 --- [main] com.yuqn.SentinelDemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-04-12 16:21:46.832  INFO 22924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-04-12 16:21:46.842  INFO 22924 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-12 16:21:46.843  INFO 22924 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-04-12 16:21:46.993  INFO 22924 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-12 16:21:46.993  INFO 22924 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1237 ms
+2023-04-12 16:21:47.607  INFO 22924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-04-12 16:21:47.619  INFO 22924 --- [main] com.yuqn.SentinelDemoApplication         : Started SentinelDemoApplication in 2.76 seconds (JVM running for 4.987)
+2023-04-12 16:21:54.547  INFO 22924 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-12 16:21:54.548  INFO 22924 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-04-12 16:21:54.549  INFO 22924 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-04-12 16:21:57.389  INFO 22924 --- [http-nio-8081-exec-4] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:21:59.015  INFO 22924 --- [http-nio-8081-exec-5] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:21:59.184  INFO 22924 --- [http-nio-8081-exec-6] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:21:59.341  INFO 22924 --- [http-nio-8081-exec-7] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:21:59.514  INFO 22924 --- [http-nio-8081-exec-8] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:42.344  INFO 22924 --- [http-nio-8081-exec-4] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.034  INFO 22924 --- [http-nio-8081-exec-5] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.204  INFO 22924 --- [http-nio-8081-exec-6] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.366  INFO 22924 --- [http-nio-8081-exec-7] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.540  INFO 22924 --- [http-nio-8081-exec-8] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.695  INFO 22924 --- [http-nio-8081-exec-9] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:25:44.910  INFO 22924 --- [http-nio-8081-exec-10] com.yuqn.controller.TestController       : ==========hello world===========
+2023-04-12 16:46:43.841  INFO 37036 --- [main] com.yuqn.SentinelDemoApplication         : Starting SentinelDemoApplication using Java 1.8.0_311 on 餘de with PID 37036 (E:\myJavaProject\springCloudAlibaba_tl\sentinel-demo\target\classes started by yuqn in E:\myJavaProject\springCloudAlibaba_tl)
+2023-04-12 16:46:43.871  INFO 37036 --- [main] com.yuqn.SentinelDemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-04-12 16:46:45.162  INFO 37036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-04-12 16:46:45.173  INFO 37036 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-12 16:46:45.174  INFO 37036 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-04-12 16:46:45.328  INFO 37036 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-04-12 16:46:45.328  INFO 37036 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1391 ms
+2023-04-12 16:46:45.866  INFO 37036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-04-12 16:46:45.876  INFO 37036 --- [main] com.yuqn.SentinelDemoApplication         : Started SentinelDemoApplication in 2.818 seconds (JVM running for 4.681)
