@@ -11,7 +11,7 @@
         <module>nacos-config</module>
         <module>order-sentinel</module>
         <module>nacos-order-feign-sentinel</module>
-<!--        <module>nacos-order-feign-sentinel-persist</module>-->
+        <module>nacos-order-feign-sentinel-persist</module>
     </modules>
     <groupId>com.yuqn</groupId>
     <artifactId>springcloudalibaba_tl</artifactId>

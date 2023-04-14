@@ -1,0 +1,95 @@
+feign 整合 sentinel
+一、创建项目
+二、添加依赖
+    <!-- 添加 nacos 依赖-->
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+    <!-- 添加 feign 依赖-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <!-- 添加 sentinel 依赖-->
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+    </dependency>
+    <!-- 限流控制台-->
+    <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-transport-simple-http</artifactId>
+        <version>1.8.0</version>
+    </dependency>
+    <!-- 基于nacos配置中心控制台实现推送的依赖-->
+    <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-datasource-nacos</artifactId>
+    </dependency>
+三、创建接口
+    /**
+     * 添加 feign 注解，@FeignClient
+     * name：服务提供者名称
+     * path：服务提供者控制器 @RequestMapping 内容，如果没有，不写
+    */
+    @FeignClient(name = "nacos-stock",fallback = fallbackController.class)
+    @Service
+    public interface OrderService {
+        /**
+         * 定义接口对应接口，服务提供者怎么定义，就怎么写
+         */
+        @RequestMapping("test1")
+        String test();
+
+        @RequestMapping("test2")
+        String test2();
+    }
+四、创建降级类
+    @Component
+    public class fallbackController implements OrderService {
+
+        @Override
+        public String test() {
+            return "服务降级";
+        }
+
+        @Override
+        public String test2() {
+            return "服务降级";
+        }
+    }
+五、添加配置文件
+    # 设置端口
+    server:
+      port: 8081
+    # 应用名称，application.name ：表示应用名称，nacos 会将该名称当做服务名称
+    # spring.cloud.nacos.server-addr ：nacos地址
+    # spring.cloud.nacos.discoery.username ：nacos 用户名
+    # spring.cloud.nacos.discoery.password ：nacos 密码
+    # spring.cloud.nacos.discoery.namespace ：nacos 区域
+    spring:
+      application:
+        name: nacos-order
+      cloud:
+        nacos:
+          server-addr: www.yuqn.xyz:8848
+          discovery:
+            username: nacos
+            password: idiot_Yuqn@123
+            namespace: public
+    feign:
+      sentinel:
+        # openfeign 整合 sentinel
+        enabled: true
+六、nacos添加配置
+    [
+        {
+            "resource":"test",
+            "controlBehavior":0,
+            "count":"2",
+            "grade":1,
+            "limitApp":"default",
+            "strategy":0
+        }
+    ]
