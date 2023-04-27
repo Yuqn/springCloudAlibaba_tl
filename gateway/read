@@ -1,0 +1,38 @@
+gateway网使用
+=================================================================================================================
+上述，用户输入 http://ip:端口/标识/请求  后，快速找到对应ip:端口的网关，通过断言，找到网关中对应标识的处理方式（网关有多种设置），
+进而确定http://目标ip:目标端口/标识/请求，再通过拦截器，去除对应的标识，最终组成http://目标ip:目标端口/请求
+=================================================================================================================
+一、创建项目
+二、添加依赖
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+</dependencies>
+三、写配置文件
+server:
+  port: 8083
+spring:
+  application:
+    name: api-gateway
+  cloud: #配置gateway网关
+    gateway:
+      routes:
+        - id: order_route #路由唯一标识
+          uri: http://localhost:8081 #需要转发的地址
+          #断言设置，用于路由规则匹配
+          predicates:
+            - Path=/order-serv/** #表示只会匹配请求路径包含order-serv的请求
+          filters:
+            - StripPrefix=1 #自动去掉上面的order-serv
+
+        # - id: order_route # 路由唯一标识
+
+        # 网关原理
+        # 上述，用户输入 http://localhost:8083/order-serv/test1  后，
+        # 通过 predicates 断言，确定该请求包含 order-serv ，进而使用当前id的网关（id: order_route）
+        # 然后通过网关转到 http://localhost:8081/order-serv/test1  后，
+        # 通过 filters 去掉 断言关键字 order-serv，最总链路到 http://localhost:8081/test1
+
