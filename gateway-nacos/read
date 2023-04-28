@@ -1,0 +1,45 @@
+gateway整合nacos
+一、创建项目
+二、添加依赖
+<dependencies>
+    <!-- gateway依赖-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+    <!-- nacos依赖-->
+    <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+</dependencies>
+三、写配置文件
+server:
+  port: 8083
+spring:
+  application:
+    name: api-gateway
+  cloud: #配置gateway网关
+    gateway:
+      routes:
+        - id: order_route #路由唯一标识
+          uri: lb://nacos-order #需要转发的服务（找到对应的消费者的某个接口，消费者自动调用提供者）,lb:使用nacos中的本地负载均衡策略
+          #断言设置，用于路由规则匹配
+          predicates:
+            - Path=/order-serv/** #表示只会匹配请求路径包含order-serv的请求
+          filters:
+            - StripPrefix=1 #自动去掉上面的order-serv
+
+        # - id: order_route # 路由唯一标识
+#配置nacos
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+# 网关原理
+# 上述，用户输入 http://localhost:8083/order-serv/test1  后，
+# 通过 predicates 断言，确定该请求包含 order-serv ，进而使用当前id的网关（id: order_route）
+# 然后通过网关转到 http://localhost:8081/order-serv/test1  后，
+# 通过 filters 去掉 断言关键字 order-serv，最总链路到 http://localhost:8081/test1

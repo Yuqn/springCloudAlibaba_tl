@@ -13,6 +13,7 @@
         <module>nacos-order-feign-sentinel</module>
         <module>nacos-order-feign-sentinel-persist</module>
         <module>gateway</module>
+        <module>gateway-nacos</module>
     </modules>
     <groupId>com.yuqn</groupId>
     <artifactId>springcloudalibaba_tl</artifactId>
