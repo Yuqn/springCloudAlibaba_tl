@@ -14,6 +14,7 @@
         <module>nacos-order-feign-sentinel-persist</module>
         <module>gateway</module>
         <module>gateway-nacos</module>
+        <module>gateway-nacos-custom-predicateFactory</module>
     </modules>
     <groupId>com.yuqn</groupId>
     <artifactId>springcloudalibaba_tl</artifactId>
