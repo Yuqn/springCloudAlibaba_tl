@@ -11,6 +11,11 @@ spring:
           #断言设置，用于路由规则匹配
           predicates:
             - Path=/order-serv/** #表示只会匹配请求路径包含order-serv的请求
+            #- After=2000-12-31T23:59:59.789+08:00[Asia/Shanghai] # 在2000-12-31T23:59:59之后访问才能生效
+            #- Header=X-Request-Id,\d+ #请求头必须带有X-Request-Id才能访问
+            #- Method=GET # 必须是get请求才能访问
+            #- Query=name #必须带有name参数
+            - #- Query=name,yuqn|yu #必须带有name参数,而且参数值需要带有yuqn或者yu才能
           filters:
             - StripPrefix=1 #自动去掉上面的order-serv
 
