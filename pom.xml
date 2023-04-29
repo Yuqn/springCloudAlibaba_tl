@@ -15,6 +15,7 @@
         <module>gateway</module>
         <module>gateway-nacos</module>
         <module>gateway-nacos-custom-predicateFactory</module>
+        <module>gateway-nacos-custom-filterFactory</module>
     </modules>
     <groupId>com.yuqn</groupId>
     <artifactId>springcloudalibaba_tl</artifactId>
